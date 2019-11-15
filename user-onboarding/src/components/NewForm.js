@@ -53,7 +53,7 @@ const NewForm = ({ values, errors, touched, status }) => {
                 )}
                 </div>
 
-                <div>       
+                <Divblocks>       
                 <Field as='select' className='select-role'
                 name='role'>
                 <option>Please Select a Role</option>
@@ -65,7 +65,7 @@ const NewForm = ({ values, errors, touched, status }) => {
                 {touched.role && errors.role && (
                     <p className='errors'>{errors.role}</p>
                 )}
-                </div> 
+                </Divblocks> 
                 
                 <div>         
                 <label className='terms'>
@@ -76,12 +76,12 @@ const NewForm = ({ values, errors, touched, status }) => {
                     checked={values.terms}
                     />
                     {touched.terms && errors.terms && (
-                    <p className='errors'>{errors.terms}</p>
+                    <p className='terms'>{errors.terms}</p>
                 )}
                 </label>  
                 </div> 
 
-                <div> <button type='submit'>Submit</button></div> 
+                <div> <Button type='submit'>Submit</Button></div> 
             </Form>
             {users.map(user =>(
                 <div>
@@ -122,7 +122,7 @@ handleSubmit( values, {setStatus, resetForm} ) {
             console.log('RESPONSE',res);
             resetForm()
         })
-        .catch(err => console.log(err.response));
+        .catch(error => console.log(error.response));
     }
 
 })(NewForm);
@@ -134,11 +134,19 @@ background-color:rgb(214,216,217);
 `;
 
 const Divblocks = styled.div`
-margin: 10px auto,
+margin: 10px;
 `;
 
 const Usercard = styled.div`
 border-1px solid red;
+`;
+
+const Button = styled.button`
+background-color:lightskyblue;
+border-radius:8px;
+border:1px solid gray;
+color:white;
+margin-bottom:20px;
 `;
 
 export default FormikNewForm
